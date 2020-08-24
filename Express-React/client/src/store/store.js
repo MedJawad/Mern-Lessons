@@ -1,4 +1,5 @@
 import React from 'react';
 import {createStore} from 'redux';
+import RootReducer from '../reducers';
 
-const store = createStore(RootReducer)
+export const store = createStore(RootReducer)

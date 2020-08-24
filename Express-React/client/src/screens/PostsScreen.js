@@ -1,19 +1,17 @@
 import React, { useState, useContext } from 'react';
 import Post from '../components/Post/Post';
-import PostsContext from '../contexts/PostsContext';
+import {
+    useSelector
+} from 'react-redux';
 const PostsScreen = () => {
-    const posts = useContext(PostsContext);
-//SOLID PRINCIPLES
+
+    const posts = useSelector(state => state.posts.items);
+
     return (
         <div>
             {
-                posts.map((post,index)=><Post key={index} {...post} />)
+                posts.map((post, index) => <Post key={index} {...post} />)
             }
-            {/* <PostsContext.Consumer>
-                {
-                    posts => <div>{posts.map((post,index)=><Post key={index} {...post} />)}</div>
-                }
-            </PostsContext.Consumer> */}
         </div>
     );
 }

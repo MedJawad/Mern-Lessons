@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #e6d4a8;
+  background-color: #121212;
   padding: 10px;
 `;
 
 export const HeaderBrand = styled.div`
-  background-color: #136549;
-  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
 `;
 
 export const HeaderLinks = styled.div`
@@ -23,6 +25,16 @@ export const HeaderLinks = styled.div`
 `;
 
 export const HeaderLink = styled.div`
-  padding: 10px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  font-weight: bold;
+  text-align: center;
   margin: 5px;
+  margin-right: 10vw;
+  a:hover {
+    color: #789abc;
+    transition: 0.5s ease;
+  }
 `;

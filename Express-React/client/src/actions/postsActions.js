@@ -1,28 +1,28 @@
 import axios from "axios";
-
+import { postActionTypes } from "./actionTypes";
 const requestPosts = () => ({
-  type: "REQUEST_POSTS",
+  type: postActionTypes.request,
 });
 
 const receivePosts = (data) => ({
-  type: "RECEIVE_POSTS",
+  type: postActionTypes.receive,
   data,
 });
 
 const failurePosts = (error) => {
   return {
-    type: "FAILURE_POSTS",
+    type: postActionTypes.failure,
     error,
   };
 };
-// We re gonna dispatch fetchPosts
 // promise.then() <=> async await
+// We re gonna dispatch fetchPosts
 export const fetchPosts = () => {
   return (dispatch) => {
     dispatch(requestPosts());
     return axios
       .get("/api/posts")
       .then((res) => dispatch(receivePosts(res.data)))
-      .catch((err) => console.log(err));
+      .catch((err) => dispatch(failurePosts(err)));
   };
 };

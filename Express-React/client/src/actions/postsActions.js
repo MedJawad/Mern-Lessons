@@ -26,3 +26,13 @@ export const fetchPosts = () => {
       .catch((err) => dispatch(failurePosts(err)));
   };
 };
+
+export const createPost = (post) => {
+  return (dispatch) => {
+    return axios
+      .post("/api/posts", post)
+      .then((res) => console.log(res))
+      .then(() => dispatch(fetchPosts()))
+      .catch((err) => console.log(err));
+  };
+};

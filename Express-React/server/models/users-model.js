@@ -25,6 +25,13 @@ const getUserById = async (id) => {
 
   return user;
 };
+const loginWithUsernameAndPassword = async (username, password) => {
+  const user = await User.findOne({
+    username,
+    password,
+  }).exec();
+  return user;
+};
 const updateUser = async (id, updatedUser) => {
   await User.replaceOne(
     {
@@ -43,6 +50,7 @@ const deleteUser = async (id) => {
 exports.getUsers = getUsers;
 exports.createUser = createUser;
 exports.getUserById = getUserById;
+exports.loginWithUsernameAndPassword = loginWithUsernameAndPassword;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
 exports.User = User;

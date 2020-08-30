@@ -3,6 +3,8 @@ require("dotenv").config();
 const userRouter = require("./server/routes/users-routes");
 
 const postRouter = require("./server/routes/posts-routes");
+const authRouter = require("./server/routes/auth-routes");
+
 const path = require("path");
 
 const app = express();
@@ -17,6 +19,7 @@ app.use("/api/users", (req, res, next) => {
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/", authRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/", "index.html"));

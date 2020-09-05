@@ -4,6 +4,7 @@ const userRouter = require("./server/routes/users-routes");
 
 const postRouter = require("./server/routes/posts-routes");
 const authRouter = require("./server/routes/auth-routes");
+const { authMiddleware } = require("./server/middleware/auth-middleware");
 
 const path = require("path");
 
@@ -18,7 +19,7 @@ app.use("/api/users", (req, res, next) => {
 });
 
 app.use("/api/users", userRouter);
-app.use("/api/posts", postRouter);
+app.use("/api/posts", authMiddleware, postRouter);
 app.use("/api/", authRouter);
 
 app.get("*", (req, res) => {

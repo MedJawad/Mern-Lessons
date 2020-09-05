@@ -10,7 +10,7 @@ const createPost = async (req, res) => {
   const post = await postsModel.createPost({
     title: req.body.title,
     description: req.body.description,
-    author: req.body.author,
+    author: req.body.user._id,
   });
   res.status(201).json(post);
 };

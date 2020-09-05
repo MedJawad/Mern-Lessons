@@ -6,7 +6,10 @@ import {
   HeaderLink,
 } from "./Header.styles";
 import { Link } from "react-router-dom";
+import { logout } from "../../actions/authActions";
+import { useDispatch } from "react-redux";
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <HeaderContainer>
       <HeaderBrand>MYREACTAPP</HeaderBrand>
@@ -21,7 +24,7 @@ const Header = () => {
           <Link to="/users">Users</Link>
         </HeaderLink>
         <HeaderLink>
-          <Link to="/logout">Logout</Link>
+          <button onClick={() => dispatch(logout())}>Logout</button>
         </HeaderLink>
       </HeaderLinks>
     </HeaderContainer>
